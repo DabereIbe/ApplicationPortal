@@ -1,0 +1,60 @@
+@model ApplicationPortal.Models.ViewModels.ApplicationViewModel
+@{
+    ViewData["Title"] = "Apply";
+}
+
+<div class="job-details">
+    <p>
+        @Model.Jobs.Description
+    </p>
+</div>
+
+<div class="container-fluid">
+    <form asp-action="Apply" enctype="multipart/form-data">
+        <div class="col-8">
+            <div class="form-group">
+                <label asp-for="@Model.Applicants.FirstName"></label>
+                <input class="form-control" asp-for="@Model.Applicants.FirstName">
+                <span asp-validation-for="@Model.Applicants.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Applicants.LastName"></label>
+                <input class="form-control" asp-for="@Model.Applicants.LastName">
+                <span asp-validation-for="@Model.Applicants.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.IdentityUser.Email"></label>
+                <input class="form-control" asp-for="@Model.IdentityUser.Email">
+                <span asp-validation-for="@Model.IdentityUser.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Applicants.YearsOfExperience"></label>
+                <input class="form-control" asp-for="@Model.Applicants.YearsOfExperience">
+                <span asp-validation-for="@Model.Applicants.YearsOfExperience" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Applicants.LinkedIn"></label>
+                <input class="form-control" asp-for="@Model.Applicants.LinkedIn">
+                <span asp-validation-for="@Model.Applicants.LinkedIn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Applicants.GitHub"></label>
+                <input class="form-control" asp-for="@Model.Applicants.GitHub">
+                <span asp-validation-for="@Model.Applicants.GitHub" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Applicants.CV"></label>
+                <input class="form-control" type="file" name="file">
+                <span asp-validation-for="@Model.Applicants.CV" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary w-50" type="submit" >Create</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial"/>
+}

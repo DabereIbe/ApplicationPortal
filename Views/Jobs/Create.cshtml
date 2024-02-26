@@ -1,0 +1,55 @@
+@model Jobs
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h5>Create New Job</h5>
+<hr>
+
+<form asp-action="Create">
+    <div class="col-8">
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="@Model.RankId"></label>
+            </div>
+            <div class="col-8">
+                <select class="form-control" asp-for="@Model.RankId" asp-items="@ViewBag.Ranks" >
+                    <option disabled selected>--Please Select a Rank--</option>
+                </select>
+                <span asp-validation-for="@Model.RankId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="@Model.JobName"></label>
+            </div>
+            <div class="col-8">
+                <input asp-for="@Model.JobName" class="form-control">
+                <span asp-validation-for="@Model.JobName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="@Model.Description"></label>
+            </div>
+            <div class="col-8">
+                <textarea asp-for="@Model.Description" class="form-control"></textarea>
+                <span asp-validation-for="@Model.Description" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-8 row">
+                <button class="btn btn-primary w-50" type="submit" >Create</button> 
+                <a asp-action="Index" class="btn btn-info w-50" type="submit" >Back</a>
+            </div>
+        </div>
+    </div>
+    
+</form>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial"/>
+}

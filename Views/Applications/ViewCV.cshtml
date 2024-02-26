@@ -1,0 +1,3 @@
+@model byte[]
+
+<iframe src="@String.Format("data:application/pdf;base64,{0}", Convert.ToBase64String(Model))" width="100%" height="600"></iframe>

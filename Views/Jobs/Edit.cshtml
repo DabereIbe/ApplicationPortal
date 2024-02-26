@@ -1,0 +1,53 @@
+@model Jobs
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h5>Edit Job</h5>
+<hr>
+
+<form asp-action="Edit">
+    <div class="col-8">
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="@Model.RankId"></label>
+            </div>
+            <div class="col-8">
+                <select class="form-control" asp-for="@Model.RankId" asp-items="@ViewBag.Ranks" >
+                    <option disabled selected>--Please Select a Rank--</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="@Model.JobName"></label>
+            </div>
+            <div class="col-8">
+                <input asp-for="@Model.JobName" class="form-control">
+            </div>
+        </div>
+        
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="@Model.Description"></label>
+            </div>
+            <div class="col-8">
+                <textarea asp-for="@Model.Description" class="form-control"></textarea>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-8">
+                <button class="btn btn-primary w-50" type="submit" >Edit</button>
+                <a asp-action="Index" class="btn btn-info w-50" type="submit" >Back</a>
+            </div>
+        </div>
+    </div>
+    
+</form>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial"/>
+}

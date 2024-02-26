@@ -1,0 +1,56 @@
+@model Applicants
+@{
+    ViewData["Title"] = String.Concat(Model.FirstName , " " , Model.LastName);
+}
+
+<h4 style="text-align: center;">@String.Concat(Model.FirstName , " " , Model.LastName)</h4>
+
+<dl class="row">
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(m => m.FirstName)
+    </dt>
+    <dd class="col-sm-10">
+        @Model.FirstName
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(m => m.LastName)
+    </dt>
+    <dd class="col-sm-10">
+        @Model.LastName
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(m => m.Email)
+    </dt>
+    <dd class="col-sm-10">
+        @Model.Email
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(m => m.YearsOfExperience)
+    </dt>
+    <dd class="col-sm-10">
+        @Model.YearsOfExperience
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(m => m.LinkedIn)
+    </dt>
+    <dd class="col-sm-10">
+        @Model.LinkedIn
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(m => m.GitHub)
+    </dt>
+    <dd class="col-sm-10">
+        @Model.GitHub
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(m => m.CV)
+    </dt>
+    <dd class="col-sm-10">
+        <a asp-controller="Applications" asp-action="ViewCV" asp-route-pdfFile="@Model.CV" class="btn btn-primary w-50">View CV</a>
+    </dd>
+</dl>
+<div class="col-8 row">
+    <a asp-controller="Applications" asp-action="InviteApplicant" asp-route-id="@Model.Id" class="btn btn-primary" >Invite</a>
+    &nbsp; 
+    <a asp-controller="Applications" asp-action="RejectApplicant" asp-route-id="@Model.Id" class="btn btn-danger" >Reject</a>
+</div>

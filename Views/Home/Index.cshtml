@@ -1,0 +1,58 @@
+﻿@model ApplicationPortal.Models.ViewModels.HomeViewModel
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+@* <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+        <img src="~/images/depositphotos_137037020-stock-photo-professional-software-developer-working-in.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="~/images/images.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="~/images/istockphoto-1147195672-612x612.jpg" class="d-block w-100" alt="...">
+    </div>
+  </div>
+</div> *@
+
+<div class="jobs-section">
+  <h4> List of Jobs </h4>
+  <div class="job-list">
+    <div class="row">
+      @foreach (var item in Model.Ranks)
+      {
+        <div class="col">
+          @item.Name
+        
+        @foreach (var job in Model.Jobs)
+        {
+          if (item.Id == job.RankId)
+          {
+            <div class="col">
+              <ul>
+                <li><a asp-action="Apply" asp-route-jobId="@job.Id" asp-route-email="@UserManager.GetUserName(User)">@job.JobName</a></li>
+              </ul>
+              
+            </div>
+          }
+          
+        }
+        </div>
+      }
+      
+      @* <div class="col">
+        2 of 3
+      </div>
+      <div class="col">
+        3 of 3
+      </div> *@
+    </div>
+  </div>
+</div>
